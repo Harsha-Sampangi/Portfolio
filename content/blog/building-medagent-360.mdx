@@ -1,0 +1,44 @@
+---
+title: "Building MedAgent 360: How I Used LLMs to Analyze Medical Reports"
+date: "June 2026"
+category: "AI/ML"
+readTime: "6 min read"
+excerpt: "A deep dive into the architecture, challenges, and lessons learned while building an autonomous healthcare AI system that extracts and analyzes information from unstructured medical records."
+---
+
+When I first conceptualized **MedAgent 360**, the goal was simple: reduce the friction between raw medical data (like handwritten prescriptions and dense lab reports) and actionable clinical insights. 
+
+Doctors spend hours every week just parsing through unstructured data. What if an autonomous agent could do the heavy lifting?
+
+## The Architecture
+
+The system is built on a multi-agent workflow using LangChain and Python. 
+
+1. **Ingestion & OCR:** We use advanced Optical Character Recognition to extract text from images and PDFs.
+2. **Entity Extraction:** An LLM specifically prompted for medical NER (Named Entity Recognition) pulls out medications, dosages, and patient vitals.
+3. **Analysis & Insight:** A separate reasoning agent cross-references this data against medical databases to check for drug interactions or abnormal lab values.
+
+```python
+from langchain.agents import initialize_agent, AgentType
+from langchain.chat_models import ChatOpenAI
+
+# Initialize the medical reasoning agent
+medical_agent = initialize_agent(
+    tools=medical_tools,
+    llm=ChatOpenAI(temperature=0, model="gpt-4"),
+    agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+)
+```
+
+## The Biggest Challenge: Hallucinations
+
+In healthcare, LLM hallucinations aren't just annoying; they are dangerous. We couldn't afford for the model to "guess" a dosage.
+
+To solve this, we implemented **Strict Grounding**. Every claim the model makes must be directly cited from the OCR text. We also added a human-in-the-loop verification step for any data point where the model's confidence score dipped below 95%.
+
+## What's Next?
+
+MedAgent 360 is currently in a prototype phase, but the results so far are incredibly promising. We've reduced report processing time by 80% in our limited testing. The next step is integrating a more robust vector database (like Pinecone or Weaviate) to give the agent long-term memory of a patient's history.
+
+Building this taught me that AI isn't just about cool tech; it's about building trust through reliability.

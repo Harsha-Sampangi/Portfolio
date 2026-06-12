@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ========================================
+   DESIGN SYSTEM — Harsha Sampangi Portfolio
+   ======================================== */
+
+:root {
+  /* Background */
+  --bg-primary: #F9F9F7;
+  --bg-secondary: #F3F4F6;
+  --bg-dark: #111111;
+
+  /* Text */
+  --text-primary: #111111;
+  --text-secondary: #6B7280;
+  --text-inverse: #FFFFFF;
+
+  /* Accent */
+  --accent: #2563EB;
+  --accent-light: #EFF6FF;
+  --accent-mid: #BFDBFE;
+  --accent-dark: #1D4ED8;
+
+  /* Border */
+  --border: #E5E7EB;
+  --border-subtle: #F3F4F6;
+}
+
+@theme inline {
+  /* Colors */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-dark: var(--bg-dark);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-inverse: var(--text-inverse);
+
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-mid: var(--accent-mid);
+  --color-accent-dark: var(--accent-dark);
+
+  --color-border-default: var(--border);
+  --color-border-subtle: var(--border-subtle);
+
+  /* Fonts */
+  --font-display: var(--font-syne);
+  --font-body: var(--font-inter);
+
+  /* Animations */
+  --animate-float: float 3s ease-in-out infinite alternate;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+}
+
+/* ========================================
+   CUSTOM KEYFRAMES
+   ======================================== */
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.85); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   TYPOGRAPHY UTILITIES
+   ======================================== */
+
+.font-display {
+  font-family: var(--font-syne), system-ui, sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Display scale */
+.text-display-xl {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-size: 72px;
+  line-height: 1.0;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.text-display-lg {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-size: 56px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.text-h1 {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-h2 {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-eyebrow {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.0;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   FOCUS STATES
+   ======================================== */
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   SELECTION
+   ======================================== */
+
+::selection {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* ========================================
+   SCROLLBAR (subtle, modern)
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
