@@ -34,10 +34,10 @@ export default function Hero() {
     shouldReduceMotion
       ? {}
       : {
-          initial: { opacity: 0, y: 24 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.5, ease, delay },
-        };
+        initial: { opacity: 0, y: 24 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, ease, delay },
+      };
 
   return (
     <section
@@ -113,7 +113,7 @@ export default function Hero() {
               className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
             >
               <a
-                href="/Harsha_Sampangi_Resume.pdf"
+                href="portfolio/public/Harsha_Sampangi_Resume.pdf"
                 download
                 className="inline-flex items-center justify-center gap-2 bg-accent text-white font-medium px-6 py-3 rounded-xl hover:bg-accent-dark hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
               >
