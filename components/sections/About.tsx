@@ -54,7 +54,7 @@ export default function About() {
                 <span className="w-px h-4 bg-border-default" />
                 <span>B.Tech 2024–2028</span>
                 <span className="w-px h-4 bg-border-default" />
-                <span>Malla Reddy Engineering College</span>
+                <span>Malla Reddy (MR) Deemed to be University</span>
               </div>
             </div>
           </AnimatedSection>
